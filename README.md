@@ -1,7 +1,7 @@
 # Project_3
 This is a bank loan model created for my third project at flatiron.
 
-## Project Description
+## 1 Project Description
 
 
 ### 1.1 The data
@@ -27,9 +27,9 @@ First looking at the head of this data and the description of basics like quarti
 
 Taking a look below at the histograms for each column or 'feature', it can be observed that our continuous variables include Age, Experience, Income, CCAvg, and Mortgage. Both CCAvg and Mortgage indicate two things:
 
-The first is many of the rows are ticked with 0. All of those rows indicate people who do not have a Credit Card or Mortgage, respectively.
+* The first is many of the rows are ticked with 0. All of those rows indicate people who do not have a Credit Card or Mortgage, respectively.
 
-The second is the remaining values representing the amount of average credit card expenditure per month and mortgage amount in thousands, respectively.
+* The second is the remaining values representing the amount of average credit card expenditure per month and mortgage amount in thousands, respectively.
 
 These seperate issues will be handled in the data cleaning.
 
@@ -58,7 +58,7 @@ The final method that was chosen was to select individual columns, or features, 
 
 The business problem is to expand the number of 'asset customers' the bank has. This means customers who are paying interst to the bank and there for increasing the bank's overall networth. The idea is to create a machine learning model that will accurately predict the liklihood someone will accept a personal loan. Using this informatino the bank can selectively market their personal loan program and expand their number of 'asset customers'.
 
-## Exploratory Data Analysis
+## 2 Exploratory Data Analysis
 
 ### 2.1 
 In this exploratory data analysis I try to explore the obvious relationships.  We assume that the higher someone's income is the higher their mortgage will be.  Digging deeper we assume that more years of experience the higher their income will be.  Finally the more augmented all these factors are, the safer it is to assume that there is a higher monthly credit card bill as well.  We rely on the assumption that all of these factors have specific linear relationships with one another.  
@@ -67,7 +67,7 @@ What we want to explore however, is how ALL of these variables affect our final 
 
 ![Exploratory Data Analysis](images/EDA.png)
 
-## Building Models
+## 3 Building Models
 
 ### 3.1 Logistic Regression
 Unlike Linear Regression Logistic Regression accounts for Categorical variables.
@@ -79,7 +79,7 @@ Logistic regression is easier to implement, interpret, and very efficient to tra
 Trees answer sequential questions which send us down a certain route of the tree given the answer. The model behaves with “if this than that” conditions ultimately yielding a specific result.
 Our decision tree was actually right off the bat a well performing model.  It's AUC and accuracy were incredible.
 
-AUC - ROC curve is a performance measurement for the classification problems at various threshold settings. ROC is a probability curve and AUC represents the degree or measure of separability.  The Higher the AUC, the better the model is at distinguishing between who will accept or not accept the personal loan offer.
+![Decision Tree](images/DT_plot.png)
 
 ### 3.3 Random Forest
 
@@ -88,6 +88,8 @@ From an article on Towards Data Science:
 One way Random Forests reduce variance is by training on different samples of the data. A second way is by using a random subset of features. This means if we have 30 features, random forests will only use a certain number of those features in each model, say five. Unfortunately, we have omitted 25 features that could be useful. But as stated, a random forest is a collection of decision trees. Thus, in each tree we can utilize five random features. If we use many trees in our forest, eventually many or all of our features will have been included. This inclusion of many features will help limit our error due to bias and error due to variance. If features weren’t chosen randomly, base trees in our forest could become highly correlated. This is because a few features could be particularly predictive and thus, the same features would be chosen in many of the base trees. If many of these trees included the same features we would not be combating error due to variance. With that said, random forests are a strong modeling technique and much more robust than a single decision tree. They aggregate many decision trees to limit overfitting as well as error due to bias and therefore yield useful results.
 
 The Random Forest Model along with the Decision Tree is an excellently performing model.  All of its scores are high across the board, our confusion matrix shows a very low false positive rate, and the AUC is very high. 
+
+![Random Forest](images/RF_final_plot.png)
 
 ### 3.4 K-Nearest Neighbor
 
@@ -107,7 +109,7 @@ XGBoost is a popular and efficient open-source implementation of the gradient bo
 
 XG Boost performed as well as Decision Tree and Random Forest giving us a 3 way tie!
 
-## What helps us decide which model is best?
+## 4 What helps us decide which model is best?
 
 ### 4.1 Accuracy
 
@@ -139,8 +141,15 @@ Our goal result from our confusion matricies is to have:
 
 |Confusion Matrix| |
 |:---:|:---:
-|Actually Denied|False Approval|
-|False Denied|Actually Approved|
+|True Negative|False Positive|
+|False Negative|True Positive|
+
+Or in other words:
+
+|Confusion Matrix| |
+|:---:|:---:
+|People who actually Declined|People we thought would accept, but declined.|
+|People we thought would decline, but accepted.|People who actually accepted.|
 
 ![OG Confusion Matrix](images/CF_RF_Original.png)
 
@@ -150,12 +159,19 @@ It is important to note however, that the top right corner is people who we thou
 
 AUC - ROC curve is a performance measurement for the classification problems at various threshold settings. ROC is a probability curve and AUC represents the degree or measure of separability.  The Higher the AUC, the better the model is at distinguishing between who will accept or not accept the personal loan offer.
 
-## Overall Results
+![SVM AUC](images/SVM_AUC)
+
+![XGB AUC](images/XGB_AUC)
+
+## 5 Overall Results
 
 ### 5.1 
+
+![Results](images/table.png)
+
 We are going to go with Random Forest.  XG Boost Performs a little better as far as balancing False Positives and False Negatives.  In the case of this marketing campagin however, we want our false positives to be as low as possible.  This is because any potential client will have money and resources invested in them.  False positives are a waste of time and resources.  False Negatives are not ideal, but there is a likelihood they will discover promotional offers via internet, signs, word of mouth, ext.  Since the Random Forest consistantly produces the lowest number of False Positives it is the winner.  The confusion matrix broke the tie.
 
-## Final Additions
+## 6 Final Additions
 
 ### 6.1 SMOTE - Class Imbalance
 
@@ -175,7 +191,7 @@ SMOTE stands for Synthetic Minority Oversampling Technique. This is a statistica
  
  ![Feature Importance](images/Feature_Importance.png)
  
- ## Conclusion
+ ## 7 Conclusion
  
  ### 7.1 Suggestions
  
