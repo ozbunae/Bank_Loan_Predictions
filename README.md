@@ -140,14 +140,14 @@ Our goal result from our confusion matricies is to have:
 
 
 |Confusion Matrix| |
-|:---:|:---:
+|:---:|:---:|
 |True Negative|False Positive|
 |False Negative|True Positive|
 
 Or in other words:
 
 |Confusion Matrix| |
-|:---:|:---:
+|:---:|:---:|
 |People who actually Declined|People we thought would accept, but declined.|
 |People we thought would decline, but accepted.|People who actually accepted.|
 
@@ -159,9 +159,9 @@ It is important to note however, that the top right corner is people who we thou
 
 AUC - ROC curve is a performance measurement for the classification problems at various threshold settings. ROC is a probability curve and AUC represents the degree or measure of separability.  The Higher the AUC, the better the model is at distinguishing between who will accept or not accept the personal loan offer.
 
-![SVM AUC](images/SVM_AUC)
+![SVM AUC](images/SVM_AUC.png)
 
-![XGB AUC](images/XGB_AUC)
+![XGB AUC](images/XGB_AUC.png)
 
 ## 5 Overall Results
 
@@ -203,4 +203,8 @@ This model can be expanded to a national or world wide market.  I would suggest 
 
 ### 7.2 Further Work
 
+Moving forward from here I think it would be best to come up with a marketing scheme that would help recent graduates consolidate debt into a fixed monthly payment.
 
+Start creating geographical profiles for other regions.
+
+Break loan amounts into ranges that are contingent with income, CC debt, student loan debt and so on.  Finding out if there are specific income ranges, education levels or, CC debt that we should target.
