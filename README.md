@@ -65,7 +65,7 @@ In this exploratory data analysis I try to explore the obvious relationships.  W
 
 What we want to explore however, is how ALL of these variables affect our final model.
 
-![Exploratory Data Analysis](EDA.png)
+![Exploratory Data Analysis](images/EDA.png)
 
 ## Building Models
 
@@ -142,7 +142,7 @@ Our goal result from our confusion matricies is to have:
 |Actually Denied|False Approval|
 |False Denied|Actually Approved|
 
-![OG Confusion Matrix](CF_RF_Original.png)
+![OG Confusion Matrix](images/CF_RF_Original.png)
 
 It is important to note however, that the top right corner is people who we thought would accept the offer but rejected.  This is the number we want the lowest out of the entire confusion matrix.  Although False Negative is not ideal, we can count on the fact that these customers may learn about the promotion via general advertising.  The idea is to reach as many true positives (or people who will accept the loan offer) and the avoid false positives (people we thought would accept but end up rejecting) as this will be a waste of time and resources.   
 
@@ -159,7 +159,7 @@ We are going to go with Random Forest.  XG Boost Performs a little better as far
 
 ### 6.1 SMOTE - Class Imbalance
 
-![Class Imbalance](Class_Imbalance.png)
+![Class Imbalance](images/Class_Imbalance.png)
 
 As we can see, the one huge problem with our data set is that our dependant variable is grossly imbalanced.  
 Although only 9% of the people approved for this loan accepted it is still data worth digging into.
@@ -168,12 +168,12 @@ We are going to handle that with SMOTE.
 
 SMOTE stands for Synthetic Minority Oversampling Technique. This is a statistical technique for increasing the number of cases in your dataset in a balanced way. SMOTE takes the entire dataset as an input, but it increases the percentage of only the minority cases.
 
-![Final Confusion Matrix](Confusion_Matrix_RF.png)
+![Final Confusion Matrix](images/Confusion_Matrix_RF.png)
 
 ### 6.2 Feature Importance
  Feature importance refers to a class of techniques for assigning scores to input features to a predictive model that indicates the relative importance of each feature when making a prediction.
  
- ![Feature Importance](Feature_Importance.png)
+ ![Feature Importance](images/Feature_Importance.png)
  
  ## Conclusion
  
