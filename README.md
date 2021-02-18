@@ -74,10 +74,12 @@ Unlike Linear Regression Logistic Regression accounts for Categorical variables.
 
 Logistic regression is easier to implement, interpret, and very efficient to train. If the number of observations is lesser than the number of features, Logistic Regression should not be used, otherwise, it may lead to overfitting. It makes no assumptions about distributions of classes in feature space.
 
+Although logistic regression is better than linear regression at dealing with categorical variables, it still is not a great model compared to the other algorithmic models that are in this set of trials.  The logistic regression model was discarded early on.
+
 ### 3.2 Decision Tree
 
 Trees answer sequential questions which send us down a certain route of the tree given the answer. The model behaves with “if this than that” conditions ultimately yielding a specific result.
-Our decision tree was actually right off the bat a well performing model.  It's AUC and accuracy were incredible.
+Our decision tree was actually right off the bat a well performing model.  It's AUC and accuracy were incredible.  The actual plot of the tree is beautiful.
 
 ![Decision Tree](images/DT_plot.png)
 
@@ -88,7 +90,7 @@ From an article on Towards Data Science:
 One way Random Forests reduce variance is by training on different samples of the data. A second way is by using a random subset of features. This means if we have 30 features, random forests will only use a certain number of those features in each model, say five. Unfortunately, we have omitted 25 features that could be useful. But as stated, a random forest is a collection of decision trees. Thus, in each tree we can utilize five random features. If we use many trees in our forest, eventually many or all of our features will have been included. This inclusion of many features will help limit our error due to bias and error due to variance. If features weren’t chosen randomly, base trees in our forest could become highly correlated. This is because a few features could be particularly predictive and thus, the same features would be chosen in many of the base trees. If many of these trees included the same features we would not be combating error due to variance. With that said, random forests are a strong modeling technique and much more robust than a single decision tree. They aggregate many decision trees to limit overfitting as well as error due to bias and therefore yield useful results.
 
 The Random Forest Model along with the Decision Tree is an excellently performing model.  All of its scores are high across the board, our confusion matrix shows a very low false positive rate, and the AUC is very high. 
-
+This is the final plot of the random forest but our initial plot was much more overfit.  This still ended up being the best model in the long run.
 ![Random Forest](images/RF_final_plot.png)
 
 ### 3.4 K-Nearest Neighbor
@@ -107,7 +109,7 @@ This model did not perform well at all.  It was along the lines of K Nearest Nei
 
 XGBoost is a popular and efficient open-source implementation of the gradient boosted trees algorithm. When using gradient boosting for regression, the weak learners are regression trees, and each regression tree maps an input data point to one of its leafs that contains a continuous score.
 
-XG Boost performed as well as Decision Tree and Random Forest giving us a 3 way tie!
+XG Boost performed as well as Decision Tree and Random Forest giving us a 3 way tie! This model performed very well, which makes sense because it is also ina way a classification tree.  XG Boost is also known for handling categorical variables well.
 
 ## 4 What helps us decide which model is best?
 
@@ -184,10 +186,14 @@ We are going to handle that with SMOTE.
 
 SMOTE stands for Synthetic Minority Oversampling Technique. This is a statistical technique for increasing the number of cases in your dataset in a balanced way. SMOTE takes the entire dataset as an input, but it increases the percentage of only the minority cases.
 
+This final confusion matirix is almost perfect.  The false positive and false negative rate are increible low comparative to true positive and negative.  With an accuracy of almost 100%, this model will help predict who to send these Personal Loan offers to within a fraction of a point.
+
 ![Final Confusion Matrix](images/Confusion_Matrix_RF.png)
 
 ### 6.2 Feature Importance
  Feature importance refers to a class of techniques for assigning scores to input features to a predictive model that indicates the relative importance of each feature when making a prediction.
+ 
+ Here it is important to note that mortgage rate and mortgage holder did not make it to the top of the list of importance.  I though for sure that it would hit the top of the list due to poeple doing home improvements.  When I looked back at the zipcodes it turns out many of these zipcodes are in areas of California like Berkeley.  This means an augmented concentration of higher education.  This aligns with our data showing that credit card debt and education were the two highest reasons someone took a personal loan.
  
  ![Feature Importance](images/Feature_Importance.png)
  
